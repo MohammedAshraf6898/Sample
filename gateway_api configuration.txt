@@ -1,0 +1,31 @@
+application.properties
+
+spring.application.name=gateway
+server.port=8777
+
+management.endpoints.web.exposure.include=*
+eureka.client.service-url.default-zone=http://localhost:8761
+
+spring.cloud.gateway.discovery.locator.enabled=true
+spring.cloud.gateway.discovery.locator.lowerCaseServiceId=true
+
+spring.cloud.gateway.routes[0].id=productservice
+spring.cloud.gateway.routes[0].uri=lb://productservice
+spring.cloud.gateway.routes[0].predicates[0]=Path=/products
+
+spring.cloud.gateway.routes[1].id=taxservice
+spring.cloud.gateway.routes[1].uri=lb://taxservice
+spring.cloud.gateway.routes[1].predicates[0]=Path=/taxes
+
+
+
+-----------------pom.xml dependency---------------
+
+Spring Boot Actuator
+Spring Boot DevTools
+Eureka Discovery Client
+Gateway
+
+
+
+
